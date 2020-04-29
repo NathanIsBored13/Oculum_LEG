@@ -35,6 +35,12 @@ project "Oculum"
 			"OC_PLATFORM_WINDOWS",
 			"OC_BUILD_DLL"
 		}
+		
+			includedirs
+		{
+			"%{prj.name}/vendors/spdlog/include"
+		}
+
 
 		postbuildcommands
 		{
@@ -69,7 +75,8 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Oculum/src"
+		"Oculum/src",
+		"Oculum/vendors/spdlog/include"
 	}
 
 	links
