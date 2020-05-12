@@ -2,6 +2,8 @@
 
 #include "Core.h"
 
+#include <vector>
+
 namespace Oculum
 {
 	class OC_API Application
@@ -10,6 +12,7 @@ namespace Oculum
 		Application();
 		virtual ~Application();
 		void Run();
+	private:
 	};
 	Application* CreateApplication();
 }

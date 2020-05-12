@@ -25,6 +25,7 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
+[Bb]in-[Oo]bj/
 [Ll]og/
 
 # Visual Studio 2015/2017 cache/options directory
@@ -338,3 +339,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+#visual studio configuration files
+*.sln
+*.vcxproj
+*.vcxproj.filters
