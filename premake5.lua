@@ -19,6 +19,9 @@ project "Oculum"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-obj/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "ocpch.h"
+	pchsource "Oculum/src/ocpch.cpp"
+	
 	files
 	{
 		"%{prj.name}/src/**.h",

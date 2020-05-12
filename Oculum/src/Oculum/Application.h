@@ -2,8 +2,6 @@
 
 #include "Core.h"
 
-#include <vector>
-
 namespace Oculum
 {
 	class OC_API Application
