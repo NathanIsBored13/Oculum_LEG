@@ -8,6 +8,7 @@ namespace Oculum
 	Application::Application()
 	{
 		window = std::unique_ptr<Window>(Window::Create());
+		window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
 	}
 
 	Application::~Application()
@@ -25,9 +26,24 @@ namespace Oculum
 			glClearColor(rgb[0], rgb[1], rgb[2], 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 			window->OnUpdate();
-			cycle += 1;
+			cycle += 0.1;
 			cycle = fmod(cycle, 360);
 		}
+	}
+
+	void Application::OnEvent(Event& e)
+	{
+		EventDispatcher dispatcher(e);
+		//std::bind(&Application::OnWindowClose, this, std::placeholders::_1);
+		dispatcher.Dispatch<WindowCloseEvent>(std::bind(&Application::OnWindowClose, this, std::placeholders::_1));
+
+		OC_CORE_TRACE(e.ToString());
+	}
+
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		running = false;
+		return true;
 	}
 
 	void Application::HSVtoRGB(int H, double S, double V, int output[3]) {

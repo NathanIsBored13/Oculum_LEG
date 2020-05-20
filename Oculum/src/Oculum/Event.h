@@ -44,14 +44,24 @@ namespace Oculum
 		bool handled = false;
 	};
 
-
-	class EventDispatcher
+	class OC_API EventDispatcher
 	{
 	public:
 		EventDispatcher(Event&);
 		template<typename T>
-		bool Dispatch(std::function<bool(T&)> func);
+		bool Dispatch(std::function<bool(T&)> func)
+		{
+			if (m_event.GetType() == T::GetStaticType())
+			{
+				if (func(*(T*)&m_event))
+				{
+					m_event.Handled();
+				}
+				return true;
+			}
+			return false;
+		}
 	private:
-		Event& event;
+		Event& m_event;
 	};
 }

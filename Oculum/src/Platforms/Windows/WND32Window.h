@@ -10,14 +10,15 @@ namespace Oculum
 	class WND32Window : public Window
 	{
 	public:
-		WND32Window(const WindowCreateStruct& props);
+		WND32Window(const WindowCreateStruct&);
 		virtual ~WND32Window();
 		void OnUpdate() override;
 		inline unsigned int GetWidth() const override { return windowData.Width; }
 		inline unsigned int GetHeight() const override { return windowData.Height; }
 		inline void SetEventCallback(const std::function<void(Event&)>& callback) override { windowData.EventCallback = callback; }
-		void SetVSync(bool enabled) override;
+		void SetVSync(bool) override;
 		bool IsVSync() const override;
+		static void GLFWErrorCallback(int, const char*);
 	private:
 		virtual void Init(const WindowCreateStruct& props);
 		virtual void Shutdown();

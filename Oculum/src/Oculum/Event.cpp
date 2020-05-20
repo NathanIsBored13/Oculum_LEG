@@ -18,19 +18,5 @@ namespace Oculum
 		return handled;
 	}
 
-	EventDispatcher::EventDispatcher(Event& event) : event(event) {}
-
-	template<typename T>
-	bool EventDispatcher::Dispatch(std::function<bool(T&)> func)
-	{
-		if (event.GetEventType() == T::GetStaticType())
-		{
-			if (func(*(T*)&m_Event))
-			{
-				event.Handled();
-			}
-			return true;
-		}
-		return false;
-	}
+	EventDispatcher::EventDispatcher(Event& event) : m_event(event) {}
 }

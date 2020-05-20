@@ -3,6 +3,7 @@
 #include "Core.h"
 #include "Event.h"
 #include "Window.h"
+#include "Oculum/Events/ApplicationEvents.h"
 
 namespace Oculum
 {
@@ -12,6 +13,8 @@ namespace Oculum
 		Application();
 		virtual ~Application();
 		void Run();
+		void OnEvent(Event&);
+		bool OnWindowClose(WindowCloseEvent&);
 	private:
 		void HSVtoRGB(int, double, double, int[3]);
 		std::unique_ptr<Window> window;
